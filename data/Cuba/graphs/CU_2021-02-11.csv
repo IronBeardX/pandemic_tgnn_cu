@@ -1,0 +1,256 @@
+Pinar del Río,Pinar del Río,1
+Pinar del Río,Artemisa,2
+Pinar del Río,La Habana,0
+Pinar del Río,Mayabeque,0
+Pinar del Río,Matanzas,0
+Pinar del Río,Villa Clara,0
+Pinar del Río,Cienfuegos,0
+Pinar del Río,Sancti Spíritus,0
+Pinar del Río,Ciego de Ávila,0
+Pinar del Río,Camagüey,0
+Pinar del Río,Las Tunas,0
+Pinar del Río,Holguín,0
+Pinar del Río,Granma,0
+Pinar del Río,Santiago de Cuba,0
+Pinar del Río,Guantánamo,0
+Pinar del Río,Isla de la Juventud,0
+Artemisa,Pinar del Río,2
+Artemisa,Artemisa,1
+Artemisa,La Habana,2
+Artemisa,Mayabeque,2
+Artemisa,Matanzas,0
+Artemisa,Villa Clara,0
+Artemisa,Cienfuegos,0
+Artemisa,Sancti Spíritus,0
+Artemisa,Ciego de Ávila,0
+Artemisa,Camagüey,0
+Artemisa,Las Tunas,0
+Artemisa,Holguín,0
+Artemisa,Granma,0
+Artemisa,Santiago de Cuba,0
+Artemisa,Guantánamo,0
+Artemisa,Isla de la Juventud,0
+La Habana,Pinar del Río,0
+La Habana,Artemisa,2
+La Habana,La Habana,1
+La Habana,Mayabeque,2
+La Habana,Matanzas,0
+La Habana,Villa Clara,0
+La Habana,Cienfuegos,0
+La Habana,Sancti Spíritus,0
+La Habana,Ciego de Ávila,0
+La Habana,Camagüey,0
+La Habana,Las Tunas,0
+La Habana,Holguín,0
+La Habana,Granma,0
+La Habana,Santiago de Cuba,0
+La Habana,Guantánamo,0
+La Habana,Isla de la Juventud,0
+Mayabeque,Pinar del Río,0
+Mayabeque,Artemisa,2
+Mayabeque,La Habana,2
+Mayabeque,Mayabeque,1
+Mayabeque,Matanzas,2
+Mayabeque,Villa Clara,0
+Mayabeque,Cienfuegos,0
+Mayabeque,Sancti Spíritus,0
+Mayabeque,Ciego de Ávila,0
+Mayabeque,Camagüey,0
+Mayabeque,Las Tunas,0
+Mayabeque,Holguín,0
+Mayabeque,Granma,0
+Mayabeque,Santiago de Cuba,0
+Mayabeque,Guantánamo,0
+Mayabeque,Isla de la Juventud,0
+Matanzas,Pinar del Río,0
+Matanzas,Artemisa,0
+Matanzas,La Habana,0
+Matanzas,Mayabeque,2
+Matanzas,Matanzas,1
+Matanzas,Villa Clara,2
+Matanzas,Cienfuegos,2
+Matanzas,Sancti Spíritus,0
+Matanzas,Ciego de Ávila,0
+Matanzas,Camagüey,0
+Matanzas,Las Tunas,0
+Matanzas,Holguín,0
+Matanzas,Granma,0
+Matanzas,Santiago de Cuba,0
+Matanzas,Guantánamo,0
+Matanzas,Isla de la Juventud,0
+Villa Clara,Pinar del Río,0
+Villa Clara,Artemisa,0
+Villa Clara,La Habana,0
+Villa Clara,Mayabeque,0
+Villa Clara,Matanzas,2
+Villa Clara,Villa Clara,1
+Villa Clara,Cienfuegos,2
+Villa Clara,Sancti Spíritus,2
+Villa Clara,Ciego de Ávila,0
+Villa Clara,Camagüey,0
+Villa Clara,Las Tunas,0
+Villa Clara,Holguín,0
+Villa Clara,Granma,0
+Villa Clara,Santiago de Cuba,0
+Villa Clara,Guantánamo,0
+Villa Clara,Isla de la Juventud,0
+Cienfuegos,Pinar del Río,0
+Cienfuegos,Artemisa,0
+Cienfuegos,La Habana,0
+Cienfuegos,Mayabeque,0
+Cienfuegos,Matanzas,2
+Cienfuegos,Villa Clara,2
+Cienfuegos,Cienfuegos,1
+Cienfuegos,Sancti Spíritus,2
+Cienfuegos,Ciego de Ávila,0
+Cienfuegos,Camagüey,0
+Cienfuegos,Las Tunas,0
+Cienfuegos,Holguín,0
+Cienfuegos,Granma,0
+Cienfuegos,Santiago de Cuba,0
+Cienfuegos,Guantánamo,0
+Cienfuegos,Isla de la Juventud,0
+Sancti Spíritus,Pinar del Río,0
+Sancti Spíritus,Artemisa,0
+Sancti Spíritus,La Habana,0
+Sancti Spíritus,Mayabeque,0
+Sancti Spíritus,Matanzas,0
+Sancti Spíritus,Villa Clara,2
+Sancti Spíritus,Cienfuegos,2
+Sancti Spíritus,Sancti Spíritus,1
+Sancti Spíritus,Ciego de Ávila,2
+Sancti Spíritus,Camagüey,0
+Sancti Spíritus,Las Tunas,0
+Sancti Spíritus,Holguín,0
+Sancti Spíritus,Granma,0
+Sancti Spíritus,Santiago de Cuba,0
+Sancti Spíritus,Guantánamo,0
+Sancti Spíritus,Isla de la Juventud,0
+Ciego de Ávila,Pinar del Río,0
+Ciego de Ávila,Artemisa,0
+Ciego de Ávila,La Habana,0
+Ciego de Ávila,Mayabeque,0
+Ciego de Ávila,Matanzas,0
+Ciego de Ávila,Villa Clara,0
+Ciego de Ávila,Cienfuegos,0
+Ciego de Ávila,Sancti Spíritus,2
+Ciego de Ávila,Ciego de Ávila,1
+Ciego de Ávila,Camagüey,2
+Ciego de Ávila,Las Tunas,0
+Ciego de Ávila,Holguín,0
+Ciego de Ávila,Granma,0
+Ciego de Ávila,Santiago de Cuba,0
+Ciego de Ávila,Guantánamo,0
+Ciego de Ávila,Isla de la Juventud,0
+Camagüey,Pinar del Río,0
+Camagüey,Artemisa,0
+Camagüey,La Habana,0
+Camagüey,Mayabeque,0
+Camagüey,Matanzas,0
+Camagüey,Villa Clara,0
+Camagüey,Cienfuegos,0
+Camagüey,Sancti Spíritus,0
+Camagüey,Ciego de Ávila,2
+Camagüey,Camagüey,1
+Camagüey,Las Tunas,2
+Camagüey,Holguín,0
+Camagüey,Granma,0
+Camagüey,Santiago de Cuba,0
+Camagüey,Guantánamo,0
+Camagüey,Isla de la Juventud,0
+Las Tunas,Pinar del Río,0
+Las Tunas,Artemisa,0
+Las Tunas,La Habana,0
+Las Tunas,Mayabeque,0
+Las Tunas,Matanzas,0
+Las Tunas,Villa Clara,0
+Las Tunas,Cienfuegos,0
+Las Tunas,Sancti Spíritus,0
+Las Tunas,Ciego de Ávila,0
+Las Tunas,Camagüey,2
+Las Tunas,Las Tunas,1
+Las Tunas,Holguín,2
+Las Tunas,Granma,2
+Las Tunas,Santiago de Cuba,0
+Las Tunas,Guantánamo,0
+Las Tunas,Isla de la Juventud,0
+Holguín,Pinar del Río,0
+Holguín,Artemisa,0
+Holguín,La Habana,0
+Holguín,Mayabeque,0
+Holguín,Matanzas,0
+Holguín,Villa Clara,0
+Holguín,Cienfuegos,0
+Holguín,Sancti Spíritus,0
+Holguín,Ciego de Ávila,0
+Holguín,Camagüey,0
+Holguín,Las Tunas,2
+Holguín,Holguín,1
+Holguín,Granma,2
+Holguín,Santiago de Cuba,2
+Holguín,Guantánamo,2
+Holguín,Isla de la Juventud,0
+Granma,Pinar del Río,0
+Granma,Artemisa,0
+Granma,La Habana,0
+Granma,Mayabeque,0
+Granma,Matanzas,0
+Granma,Villa Clara,0
+Granma,Cienfuegos,0
+Granma,Sancti Spíritus,0
+Granma,Ciego de Ávila,0
+Granma,Camagüey,0
+Granma,Las Tunas,2
+Granma,Holguín,2
+Granma,Granma,1
+Granma,Santiago de Cuba,2
+Granma,Guantánamo,0
+Granma,Isla de la Juventud,0
+Santiago de Cuba,Pinar del Río,0
+Santiago de Cuba,Artemisa,0
+Santiago de Cuba,La Habana,0
+Santiago de Cuba,Mayabeque,0
+Santiago de Cuba,Matanzas,0
+Santiago de Cuba,Villa Clara,0
+Santiago de Cuba,Cienfuegos,0
+Santiago de Cuba,Sancti Spíritus,0
+Santiago de Cuba,Ciego de Ávila,0
+Santiago de Cuba,Camagüey,0
+Santiago de Cuba,Las Tunas,0
+Santiago de Cuba,Holguín,2
+Santiago de Cuba,Granma,2
+Santiago de Cuba,Santiago de Cuba,1
+Santiago de Cuba,Guantánamo,2
+Santiago de Cuba,Isla de la Juventud,0
+Guantánamo,Pinar del Río,0
+Guantánamo,Artemisa,0
+Guantánamo,La Habana,0
+Guantánamo,Mayabeque,0
+Guantánamo,Matanzas,0
+Guantánamo,Villa Clara,0
+Guantánamo,Cienfuegos,0
+Guantánamo,Sancti Spíritus,0
+Guantánamo,Ciego de Ávila,0
+Guantánamo,Camagüey,0
+Guantánamo,Las Tunas,0
+Guantánamo,Holguín,2
+Guantánamo,Granma,0
+Guantánamo,Santiago de Cuba,2
+Guantánamo,Guantánamo,1
+Guantánamo,Isla de la Juventud,0
+Isla de la Juventud,Pinar del Río,0
+Isla de la Juventud,Artemisa,0
+Isla de la Juventud,La Habana,0
+Isla de la Juventud,Mayabeque,0
+Isla de la Juventud,Matanzas,0
+Isla de la Juventud,Villa Clara,0
+Isla de la Juventud,Cienfuegos,0
+Isla de la Juventud,Sancti Spíritus,0
+Isla de la Juventud,Ciego de Ávila,0
+Isla de la Juventud,Camagüey,0
+Isla de la Juventud,Las Tunas,0
+Isla de la Juventud,Holguín,0
+Isla de la Juventud,Granma,0
+Isla de la Juventud,Santiago de Cuba,0
+Isla de la Juventud,Guantánamo,0
+Isla de la Juventud,Isla de la Juventud,1
