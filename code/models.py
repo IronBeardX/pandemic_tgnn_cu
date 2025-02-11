@@ -27,39 +27,48 @@ datas = collect_data_files('prophet')
 device = torch.device("cuda" if torch.cuda.is_available() else torch.device("cpu"))
 
             
-def arima(ahead,start_exp,n_samples,labels):
+def arima(ahead, start_exp, n_samples, labels):
     var = []
     y_pred = []
     y_true = []
     for idx in range(ahead):
         var.append([])
 
-    error= np.zeros(ahead)
+    error = np.zeros(ahead)
     count = 0
-    for test_sample in range(start_exp,n_samples-ahead):#
-        print(test_sample)
-        count+=1
+    for test_sample in range(start_exp, n_samples - ahead):
+        print("arima sample num: " + str(test_sample))
+        count += 1
         err = 0
         for j in range(labels.shape[0]):
-            ds = labels.iloc[j,:test_sample-1].reset_index()
+            ds = labels.iloc[j, :test_sample - 1].reset_index()
+            # print(f"Dataset for sample {test_sample}, label {j}: {ds}")
 
-            if(sum(ds.iloc[:,1])==0):
-                yhat = [0]*(ahead)
+            if sum(ds.iloc[:, 1]) == 0:
+                yhat = [0] * ahead
+                print(f"Predicted values for sample {test_sample}, label {j} (all zeros): {yhat}")
             else:
                 try:
-                    fit2 = ARIMA(ds.iloc[:,1].values, order=(2, 0, 2)).fit()
-                except:
-                    fit2 = ARIMA(ds.iloc[:,1].values, order=(1, 0, 0)).fit()
-                yhat = abs(fit2.predict(start = test_sample , end = (test_sample+ahead-1) ))
-            y_me = labels.iloc[j,test_sample:test_sample+ahead]
-            e =  abs(yhat - y_me.values)
+                    fit2 = ARIMA(ds.iloc[:, 1].values, order=(2, 0, 2)).fit()
+                except Exception as e:
+                    print(f"Error fitting ARIMA(2,0,2) for sample {test_sample}, label {j}: {e}")
+                    fit2 = ARIMA(ds.iloc[:, 1].values, order=(1, 0, 0)).fit()
+                yhat = abs(fit2.predict(start=test_sample, end=(test_sample + ahead - 1)))
+                print(f"Predicted values for sample {test_sample}, label {j}: {yhat}")
+
+            y_me = labels.iloc[j, test_sample:test_sample + ahead]
+            e = abs(yhat - y_me.values)
             err += e
             error += e
             y_pred.append(yhat)
             y_true.append(y_me.values)
+            print(f"True values for sample {test_sample}, label {j}: {y_me.values}")
+            print(f"Error for sample {test_sample}, label {j}: {e}")
 
         for idx in range(ahead):
             var[idx].append(err[idx])
+            print(f"Accumulated error for ahead {idx}: {err[idx]}")
+
     return error, var, y_pred, y_true
 
 
@@ -69,7 +78,7 @@ def gaussian_reg_time(start_exp,n_samples,labels,i_ahead,rand_seed=0):
     y_true_mat = np.zeros((0))
 
     for test_sample in range(start_exp,n_samples-i_ahead):#
-        print(test_sample)
+        print("gaussian reg sample num: " + str(test_sample))
         y_pred_arr = np.zeros((0))
         y_true_arr = np.zeros((0))
         for j in range(labels.shape[0]):
@@ -103,7 +112,7 @@ def lin_reg_time(start_exp,n_samples,labels,i_ahead):
     y_true_mat = np.zeros((0))
 
     for test_sample in range(start_exp,n_samples-i_ahead):#
-        print(test_sample)
+        print("lin reg sample num: " + str(test_sample))
         y_pred_arr = np.zeros((0))
         y_true_arr = np.zeros((0))
         for j in range(labels.shape[0]):
@@ -137,7 +146,7 @@ def rand_forest_time(start_exp,n_samples,labels,i_ahead,rand_seed=0):
     y_true_mat = np.zeros((0))
 
     for test_sample in range(start_exp,n_samples-i_ahead):#
-        print(test_sample)
+        print("rand forest sample num: " + str(test_sample))
         y_pred_arr = np.zeros((0))
         y_true_arr = np.zeros((0))
         for j in range(labels.shape[0]):
@@ -171,7 +180,7 @@ def xgboost(start_exp,n_samples,labels,i_ahead,rand_seed=0):
     y_true_mat = np.zeros((0))
 
     for test_sample in range(start_exp,n_samples-i_ahead):#
-        print(test_sample)
+        print("xgboost sample num: " + str(test_sample))
         y_pred_arr = np.zeros((0))
         y_true_arr = np.zeros((0))
         for j in range(labels.shape[0]):
@@ -207,29 +216,37 @@ def prophet(ahead, start_exp, n_samples, labels):
     for idx in range(ahead):
         var.append([])
 
-    error= np.zeros(ahead)
+    error = np.zeros(ahead)
     count = 0
-    for test_sample in range(start_exp,n_samples-ahead):#
-        print(test_sample)
-        count+=1
+    for test_sample in range(start_exp, n_samples - ahead):
+        print("prophet sample num: " + str(test_sample))
+        count += 1
         err = 0
         for j in range(labels.shape[0]):
-            ds = labels.iloc[j,:test_sample].reset_index()
-            ds.columns = ["ds","y"]
-            #with suppress_stdout_stderr():
-            m = Prophet(interval_width=0.95)
-            m.fit(ds)
-            future = m.predict(m.make_future_dataframe(periods=ahead))
-            yhat = future["yhat"].tail(ahead)
-            y_me = labels.iloc[j,test_sample:test_sample+ahead]
-            e =  abs(yhat-y_me.values).values
+            ds = labels.iloc[j, :test_sample].reset_index()
+            ds.columns = ["ds", "y"]
+            print(f"Dataset for sample {test_sample}, label {j}: {ds}")
+            try:
+                m = Prophet(interval_width=0.95)
+                m.fit(ds)
+                future = m.predict(m.make_future_dataframe(periods=ahead))
+                yhat = future["yhat"].tail(ahead)
+                print(f"Predicted values for sample {test_sample}, label {j}: {yhat}")
+            except Exception as e:
+                print(f"Error fitting Prophet model for sample {test_sample}, label {j}: {e}")
+                raise
+            y_me = labels.iloc[j, test_sample:test_sample + ahead]
+            e = abs(yhat - y_me.values).values
             err += e
             error += e
             y_pred.append(yhat)
             y_true.append(y_me.values)
+            print(f"True values for sample {test_sample}, label {j}: {y_me.values}")
+            print(f"Error for sample {test_sample}, label {j}: {e}")
         for idx in range(ahead):
             var[idx].append(err[idx])
-            
+            print(f"Accumulated error for ahead {idx}: {err[idx]}")
+
     return error, var, y_pred, y_true
             
             

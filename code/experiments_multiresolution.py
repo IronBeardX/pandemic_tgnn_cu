@@ -125,12 +125,25 @@ if __name__ == '__main__':
     random.seed(args.rand_seed)
     np.random.seed(args.rand_seed)
     device = torch.device("cuda" if torch.cuda.is_available() else torch.device("cpu"))
+
+    if device.type == 'cuda':
+        # Make a simple action to initialize the GPU
+        torch.cuda.empty_cache()
+        torch.zeros(1).to(device)
     
     
     meta_labs, meta_graphs, meta_features, meta_y = read_meta_datasets(args.window, args.rand_weights)
     
     
-    for country in ["NZ_GROUPED"]:#,",
+    for country in [
+        # "IT",
+        # "ES",
+        # "EN",
+        # "FR",
+        # "NZ",
+        "CU", 
+        # "NZ_GROUPED",
+        ]:#,",
         if(country=="IT"):
             idx = 0
 
@@ -143,11 +156,14 @@ if __name__ == '__main__':
         elif(country=="FR"):
             idx = 3
 
-        elif(country=="NZ"):
+        elif(country=="CU"):
             idx = 4
 
-        else:
+        elif(country=="NZ"):
             idx = 5
+
+        else:
+            idx = 6
 
             
         labels = meta_labs[idx]
@@ -158,7 +174,7 @@ if __name__ == '__main__':
         nfeat = meta_features[idx][0].shape[1]
         
         n_nodes = gs_adj[0].shape[0]
-        print(n_nodes)
+        print(f"Number of nodes in the graph: {n_nodes}")
         if not os.path.exists('../results'):
             os.makedirs('../results')
         if not os.path.exists('../Checkpoints'):
@@ -167,7 +183,12 @@ if __name__ == '__main__':
             os.makedirs('../Predictions')
 
         
-        for args.model in ["ATMGNN_GROUPED"]:#
+        for args.model in [
+            # "ATMGNN",
+            "MPNN",
+            "MGNN",
+            "MPNN_LSTM",
+            ]:#
 			#---- predict days ahead , 0-> next day etc.
             for shift in list(range(0,args.ahead)):
 
@@ -180,7 +201,7 @@ if __name__ == '__main__':
 
                 for test_sample in range(args.start_exp,n_samples-shift):#
                     exp+=1
-                    print(test_sample)
+                    print(f"Processing test sample {test_sample} out of {n_samples-shift-1} for country {country} with model {args.model} and shift {shift} out of {args.ahead-1}")
 
                     #----------------- Define the split of the data
                     idx_train = list(range(args.window-1, test_sample-args.sep))
@@ -287,14 +308,16 @@ if __name__ == '__main__':
 
                             if(epoch<30 and epoch>10):
                                 if(len(set([round(val_e) for val_e in val_among_epochs[-20:]])) == 1 ):
-                                    #stuck= True
-                                    stop = False
+                                    # stuck= True
+                                    # stop = False
+                                    print("break")
+                                    stop = True
                                     break
 
                             if( epoch>args.early_stop):
                                 if(len(set([round(val_e) for val_e in val_among_epochs[-50:]])) == 1):#
-                                    print("break")
-                                    #stop = True
+                                    print("Early stopping in epoch ", epoch)
+                                    stop = True
                                     break
 
                             stop = True
@@ -315,7 +338,7 @@ if __name__ == '__main__':
                     #---------------- Testing
                     test_loss = AverageMeter()
 
-                    #print("Loading checkpoint!")
+                    print("Loading checkpoint!")
                     checkpoint = torch.load('../Checkpoints/model_best_{}_shift{}_{}_RW_{}_seed{}_AG.pth.tar'.format(args.model, shift, country, args.rand_weights, args.rand_seed))
                     model.load_state_dict(checkpoint['state_dict'])
                     optimizer.load_state_dict(checkpoint['optimizer'])

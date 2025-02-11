@@ -63,7 +63,7 @@ if __name__ == '__main__':
                         help='How many epochs to wait before stopping.')
     parser.add_argument('--start-exp', type=int, default=28,
                         help='The first day to start the predictions.')
-    parser.add_argument('--ahead', type=int, default=21,
+    parser.add_argument('--ahead', type=int, default=10,
                         help='The number of days ahead of the train set the predictions should reach.')
     parser.add_argument('--sep', type=int, default=10,
                         help='Seperator for validation and train set.')
@@ -75,12 +75,21 @@ if __name__ == '__main__':
     # random.seed(args.rand_seed)
     # np.random.seed(args.rand_seed)
     device = torch.device("cuda" if torch.cuda.is_available() else torch.device("cpu"))
-    
+
+    if device.type == 'cuda':
+        # Make a simple action to initialize the GPU
+        torch.zeros(1).to(device)
+        
+    print("running on device: {}".format(device))
     
     meta_labs, meta_graphs, meta_features, meta_y = read_meta_datasets(args.window)
     
     
-    for country in ["NZ"]:#,",
+    for country in [
+        # "IT", 
+        # "ES", 
+        "CU",
+        ]:#,",
         if(country=="IT"):
             idx = 0
 
@@ -93,8 +102,11 @@ if __name__ == '__main__':
         elif(country=="FR"):
             idx = 3
 	
-        else:
+        elif(country=="CU"):
             idx = 4
+
+        elif(country=="NZ"):
+            idx = 5
             
             
         labels = meta_labs[idx]
@@ -105,7 +117,7 @@ if __name__ == '__main__':
         nfeat = meta_features[0][0].shape[1]
         
         n_nodes = gs_adj[0].shape[0]
-        print(n_nodes)
+        print('nodes ' + str(n_nodes))
         if not os.path.exists('../results'):
             os.makedirs('../results')
         if not os.path.exists('../Checkpoints'):
@@ -114,9 +126,16 @@ if __name__ == '__main__':
             os.makedirs('../Predictions')
 
         
-        for args.model in ["RAND_FOREST","GAUSSIAN_REG","XGBOOST"]:#
+        for args.model in [
+            "ARIMA", 
+            # "LIN_REG", 
+            # "RAND_FOREST", 
+            # "GAUSSIAN_REG", 
+            # "XGBOOST",
+            # "PROPHET",
+            ]:#
             
-            if(args.model=="PROPHET"):
+            if(args.model=="PROPHET"):#BROKEN ?
 
                 error, var, y_pred, y_true = prophet(args.ahead,args.start_exp,n_samples,labels)
                 count = len(range(args.start_exp,n_samples-args.ahead))
@@ -372,7 +391,6 @@ if __name__ == '__main__':
                     y_pred = np.append(y_pred, o.reshape(-1,1), axis=1)
                     y_true = np.append(y_true, l.reshape(-1,1), axis=1)
 			
-                    # Print results
                     print("test error=", "{:.5f}".format(error))
                     result.append(error)
 
